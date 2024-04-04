@@ -74,3 +74,16 @@ const deleteBtn = document.getElementById("delete-button");
 deleteBtn?.addEventListener("click", () => {
     calcScreen.innerHTML = calcScreen.innerHTML.slice(0, -1);
 });
+
+
+// equals
+const equalsBtn = document.getElementById("equal-sign");
+equalsBtn?.addEventListener("click", () => {
+    if (!lastOperator) {
+        return;
+    }
+
+    calcScreen.innerHTML = operatorFuncs.get(lastOperator)(
+        parseFloat(lastOperand), parseFloat(calcScreen.innerHTML)
+    );
+});
