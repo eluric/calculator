@@ -1,5 +1,6 @@
 const calcScreen = document.getElementsByClassName("screen")[0];
 
+let total = "";
 let lastOperand = "";
 let lastOperator = "";
 let clear = false; // doesn't actually have anything to do with the clear button
@@ -11,12 +12,14 @@ let lastInput = "";
 const numberBtns = document.getElementsByClassName("number");
 for (let i = 0; i < numberBtns.length; i ++) {
     numberBtns[i].addEventListener("click", () => {
+        const num = numberBtns[i].innerHTML;
+        lastInput = num;
         if (clear) {
             calcScreen.innerHTML = "";
             clear = false;
         }
 
-        calcScreen.innerHTML += numberBtns[i].innerHTML;
+        calcScreen.innerHTML += num
     })
 }
 
@@ -41,9 +44,16 @@ for (let i = 0; i < operatorBtns.length; i ++) {
         if (!calcScreen.innerHTML) {
             return;
         }
+
+        const operator = operatorBtns[i].innerHTML;
+        if (operatorFuncs.has(lastInput)) {
+            return;
+        }
         
+        lastInput = operator;
+
         if (!lastOperator) {
-            lastOperator = operatorBtns[i].innerHTML;
+            lastOperator = operator;
         }
         
         if (!lastOperand) {
@@ -82,6 +92,13 @@ equalsBtn?.addEventListener("click", () => {
     if (!lastOperator) {
         return;
     }
+
+    // const operatorOpposites = new Map();
+    // operatorOpposites.set("+", "−");
+    // operatorOpposites.set("−", "+");
+    // operatorOpposites.set("×", "÷");
+    // operatorOpposites.set("÷", "×");
+    clear = true;
 
     calcScreen.innerHTML = operatorFuncs.get(lastOperator)(
         parseFloat(lastOperand), parseFloat(calcScreen.innerHTML)
