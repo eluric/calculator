@@ -31,20 +31,23 @@ body {
     background-color: rgba(247, 217, 196, 0.4);
     display: grid;
     grid-template-rows: repeat(6, 1fr);
-    border-radius: 10px;
-    padding: 20px;
-    flex-basis: 400px;
-    height: 540px;
+    border-radius: .7rem;
+    padding: 1.25rem;
+    flex-basis: 25rem;
+    height: 33.75rem;
+    max-width: 30rem;
     font-size: 2rem;
 }
 
 .screen {
-    background-color: lightblue;
-    border-radius: 10px;
-    padding: 10px;
+    background-color: var(--pastel-blue);
+    border-radius: 0.625px;
+    padding-top: 0.5rem;
+    padding: 0.2rem;
     margin-bottom: 5%;
     align-items: end;
     text-align: right;
+    overflow-x: scroll;
 }
 
 .calculator-buttons button {
