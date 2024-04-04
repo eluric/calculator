@@ -54,6 +54,23 @@ for (let i = 0; i < operatorBtns.length; i ++) {
             );
         }
         console.log(lastOperand);
+        lastOperator = operatorBtns[i].innerHTML;
         clear = true;
     });
 }
+
+
+// AC button
+const clearBtn = document.getElementById("clear-button");
+clearBtn?.addEventListener("click", () => {
+    lastOperand = "";
+    lastOperator = "";
+    calcScreen.innerHTML = "";
+});
+
+
+// delete button
+const deleteBtn = document.getElementById("delete-button");
+deleteBtn?.addEventListener("click", () => {
+    calcScreen.innerHTML = calcScreen.innerHTML.slice(0, -1);
+});
